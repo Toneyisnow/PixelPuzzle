@@ -12,8 +12,16 @@ namespace StageGenerator
     {
 
 
-        public void Generate(string inputFileName, string outputFileName)
+        public void Generate(string inputFileName)
         {
+            if (!inputFileName.EndsWith(".def"))
+            {
+                Console.WriteLine("Input file name must ends with .def");
+                return;
+            }
+
+            string outputFileName = inputFileName.Replace(".def", ".json");
+
             string content = string.Empty;
             using (StreamReader reader = new StreamReader(inputFileName))
             {
@@ -37,6 +45,7 @@ namespace StageGenerator
                 stage.Formulas[line] = EncodeCharactersToUnicode(stage.Formulas[line]);
             }
 
+
             using (StreamWriter writer = new StreamWriter(outputFileName))
             {
                 writer.Write(JsonConvert.SerializeObject(stage, Formatting.Indented));
@@ -50,14 +59,21 @@ namespace StageGenerator
 
             foreach(string character in originList)
             {
-                // read the string as UTF-8 bytes.
-                byte[] encodedBytes = Encoding.UTF8.GetBytes(character);
+                if (character.StartsWith("~"))
+                {
+                    resultList.Add(character.Substring(1));
+                }
+                else
+                {
+                    // read the string as UTF-8 bytes.
+                    byte[] encodedBytes = Encoding.UTF8.GetBytes(character);
 
-                // convert them into unicode bytes.
-                byte[] unicodeBytes = Encoding.Convert(Encoding.UTF8, Encoding.Unicode, encodedBytes);
-                
-                string unicodeString = UnicodeBytesToString(unicodeBytes);
-                resultList.Add(unicodeString);
+                    // convert them into unicode bytes.
+                    byte[] unicodeBytes = Encoding.Convert(Encoding.UTF8, Encoding.Unicode, encodedBytes);
+
+                    string unicodeString = UnicodeBytesToString(unicodeBytes);
+                    resultList.Add(unicodeString);
+                }
             }
 
             return resultList;

@@ -13,10 +13,14 @@ namespace StageGenerator
     {
         static void Main(string[] args)
         {
-            Generator generator = new Generator();
-            generator.Generate("sample_input.json", "sample_output.json");
-        }
-        
+            if (args.Length < 1)
+            {
+                Console.WriteLine("Usage: StageGenerator.exe [DefinitionFileFullName]");
+                return;
+            }
 
+            Generator generator = new Generator();
+            generator.Generate(args[0]);
+        }
     }
 }

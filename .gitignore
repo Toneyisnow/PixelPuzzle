@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+
+Tools/.vs/
+Tools/packages/
+Tools/StageGenerator/bin/
+Tools/StageGenerator/obj/
+
