@@ -102,7 +102,9 @@ bool HelloWorld::init()
     }
 
     // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+	const std::string backgroundFileName = "images/win32/background/welcome-bg.png";
+    auto sprite = Sprite::create(backgroundFileName);
+
     if (sprite == nullptr)
     {
         problemLoading("'HelloWorld.png'");

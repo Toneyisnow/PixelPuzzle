@@ -10,6 +10,18 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{b378c53c-2f58-42a7-b8bc-48a94852cfc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\scenes">
+      <UniqueIdentifier>{f17ab471-322a-4bef-8d1d-c6fab248f529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\common">
+      <UniqueIdentifier>{75ebaec7-4244-4630-89f2-f31434adecce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\controls">
+      <UniqueIdentifier>{a4fc6795-b602-4c30-8804-aedb1c5300a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +33,33 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ui\scenes\WelcomeScene.cpp">
+      <Filter>src\ui\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\scenes\SelectCategoryScene.cpp">
+      <Filter>src\ui\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\common\ResolutionManager.cpp">
+      <Filter>src\ui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\common\SpriteStore.cpp">
+      <Filter>src\ui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\controls\HintBoard.cpp">
+      <Filter>src\ui\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\controls\PoemBoard.cpp">
+      <Filter>src\ui\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\controls\PuzzleBoard.cpp">
+      <Filter>src\ui\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\scenes\GameScene.cpp">
+      <Filter>src\ui\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\scenes\SelectStageScene.cpp">
+      <Filter>src\ui\scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -31,6 +70,33 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\scenes\WelcomeScene.h">
+      <Filter>src\ui\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\scenes\SelectCategoryScene.h">
+      <Filter>src\ui\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\common\ResolutionManager.h">
+      <Filter>src\ui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\common\SpriteStore.h">
+      <Filter>src\ui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\controls\HintBoard.h">
+      <Filter>src\ui\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\controls\PoemBoard.h">
+      <Filter>src\ui\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\controls\PuzzleBoard.h">
+      <Filter>src\ui\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\scenes\GameScene.h">
+      <Filter>src\ui\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\scenes\SelectStageScene.h">
+      <Filter>src\ui\scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
