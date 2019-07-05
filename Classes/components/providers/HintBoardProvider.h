@@ -22,33 +22,30 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __HINT_BOARD_POVIDER_H__
+#define __HINT_BOARD_POVIDER_H__
 
 #include "cocos2d.h"
+#include "../types/HintBoard.h"
+#include "../definitions/StageDefinition.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+
+class HintBoardProvider : public cocos2d::Ref
 {
-private:
-
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
+	HintBoardProvider();
+
+	// Given a StageDefinition, create a PuzzleBoard with random characters in it
+	HintBoard* createBoard(const StageDefinition* stageDefinition);
+
+	// Check whether current board is finished and win
+	bool isAccomplished(const HintBoard* hintBoard);
+
+	// Uncover character
+	void uncoverCharacterAt(int lineIndex, int columnIndex);
 
 
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __HINT_BOARD_POVIDER_H__

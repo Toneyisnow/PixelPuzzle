@@ -29,14 +29,21 @@
 
 class SelectStageScene : public cocos2d::Scene
 {
+private:
+	int categoryId = 0;
+
+
 public:
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createScene(int categoryId);
 
     virtual bool init();
     
-    
+	void initWithCategory();
+
     // implement the "static create()" method manually
     CREATE_FUNC(SelectStageScene);
+
+	void onConfirmClicked(cocos2d::Ref* pSender);
 };
 
 #endif // __SELECT_STAGE_SCENE_H__

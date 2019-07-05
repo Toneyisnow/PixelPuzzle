@@ -22,33 +22,33 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __PUZZLE_BOARD_POVIDER_H__
+#define __PUZZLE_BOARD_POVIDER_H__
 
 #include "cocos2d.h"
+#include "../types/PuzzleBoard.h"
+#include "../definitions/StageDefinition.h"
+#include "PuzzleOperationResult.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+
+class PuzzleBoardProvider : public cocos2d::Ref
 {
-private:
-
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
+	PuzzleBoardProvider();
+
+	// Given a StageDefinition, create a PuzzleBoard with random characters in it
+	PuzzleBoard* createBoard(const StageDefinition* stageDefinition);
+
+	// Check whether current board is deadlocked
+	bool isDeadLocked(const PuzzleBoard* puzzleBoard);
+
+	// Shuffle the characters on the Puzzle board
+	void shuffleBoard(PuzzleBoard* puzzleBoard);
+
+	PuzzleOperationResult* executeOperationAt(int positionX, int positionY);
 
 
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __PUZZLE_BOARD_POVIDER_H__

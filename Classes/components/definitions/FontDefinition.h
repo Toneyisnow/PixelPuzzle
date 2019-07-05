@@ -22,33 +22,14 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __FONT_DEFINITION_H__
+#define __FONT_DEFINITION_H__
 
 #include "cocos2d.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+class FontDefinition : public cocos2d::Ref
 {
-private:
-
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
-
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
-
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __FONT_DEFINITION_H__

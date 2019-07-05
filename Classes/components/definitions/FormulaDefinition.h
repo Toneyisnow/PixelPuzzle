@@ -22,14 +22,27 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __PUZZLE_BOARD_H__
-#define __PUZZLE_BOARD_H__
+#ifndef __FORMULA_DEFINITION_H__
+#define __FORMULA_DEFINITION_H__
 
 #include "cocos2d.h"
+#include "CharacterDefinition.h"
 
-class PuzzleBoard : public cocos2d::Node
+class FormulaDefinition : public cocos2d::Ref
 {
+private:
+
+	CharacterDefinition * characterA;
+	CharacterDefinition * characterB;
+	CharacterDefinition * targetCharacter;
+
+
+
 public:
+
+	FormulaDefinition* formula(const CharacterDefinition* charA, const CharacterDefinition* charB, const CharacterDefinition* targetChar);
+
+
 };
 
-#endif // __PUZZLE_BOARD_H__
+#endif // __FORMULA_DEFINITION_H__

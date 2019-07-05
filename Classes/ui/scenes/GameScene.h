@@ -27,13 +27,30 @@
 
 #include "cocos2d.h"
 
+#include "../controls/HintBoardControl.h"
+#include "../controls/PuzzleBoardControl.h"
+#include "../controls/PoemBoardControl.h"
+
+
 class GameScene : public cocos2d::Scene
 {
+private:
+	int stageId = 0;
+
+
+	// Controls
+	HintBoardControl *hintBoardControl = nullptr;
+	PuzzleBoardControl *puzzleBoardControl = nullptr;
+	PoemBoardControl *poemBoardControl = nullptr;
+
+
 public:
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createScene(int stageId);
 
     virtual bool init();
     
+	void initWithStage();
+
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 };

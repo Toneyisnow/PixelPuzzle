@@ -22,33 +22,71 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __PUZZLE_OPERATION_RESULT_H__
+#define __PUZZLE_OPERATION_RESULT_H__
 
 #include "cocos2d.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+//
+// Types of result: 
+// 1) ChooseFirst		- User is choosing the first character of the pair
+// 2) NotMatch   		- The current char and the previous chosen one is not matching
+// 3) MatchButBlocked	- The current char and the previous chosen one is matching, but the connection is blocked by other characters
+// 4) Match				- Match, should return a connection
+//
+
+enum PuzzleOperationResultType {
+
+	PuzzleOperationResultType_ChooseFirst = 1,
+	PuzzleOperationResultType_NotMatch = 2,
+	PuzzleOperationResultType_MatchButBlocked = 3,
+	PuzzleOperationResultType_Match = 4
+};
+
+class PuzzleOperationResult : public cocos2d::Ref
 {
 private:
 
-	int categoryId = 0;
+	PuzzleOperationResultType resultType;
 
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
+	PuzzleOperationResult(PuzzleOperationResultType type);
 
+	PuzzleOperationResultType GetResultType();
 
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+class PuzzleOperationNotMatchResult : public PuzzleOperationResult
+{
+
+public:
+
+	PuzzleOperationNotMatchResult();
+
+};
+
+class PuzzleOperationBlockedResult : public PuzzleOperationResult
+{
+
+public:
+
+	PuzzleOperationBlockedResult();
+
+};
+
+class PuzzleOperationMatchResult : public PuzzleOperationResult
+{
+
+public:
+
+	PuzzleOperationMatchResult();
+
+};
+
+
+
+
+
+
+#endif // __PUZZLE_OPERATION_RESULT_H__

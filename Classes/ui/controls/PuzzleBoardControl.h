@@ -22,33 +22,19 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __PUZZLE_BOARD_CONTROL_H__
+#define __PUZZLE_BOARD_CONTROL_H__
 
 #include "cocos2d.h"
+#include "components/types/PuzzleBoard.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+
+class PuzzleBoardControl : public cocos2d::Node
 {
-private:
-
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
+	void initialize(PuzzleBoard *puzzleBoard);
 
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __PUZZLE_BOARD_CONTROL_H__
