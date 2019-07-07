@@ -25,11 +25,21 @@
 #include "GameScene.h"
 #include "SimpleAudioEngine.h"
 
+#include "components/providers/HintBoardProvider.h"
+#include "components/providers/PuzzleBoardProvider.h"
+#include "utils/DefinitionLoader.h"
+
+
 USING_NS_CC;
 
-Scene* GameScene::createScene()
+Scene* GameScene::createScene(int stageId)
 {
-    return GameScene::create();
+	GameScene *scene = GameScene::create();
+
+	scene->stageId = stageId;
+	scene->initWithStage();
+
+	return scene;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -71,3 +81,24 @@ bool GameScene::init()
     return true;
 }
 
+void GameScene::initWithStage()
+{
+	StageDefinition * stageDefinition = DefinitionLoader::loadStageDefinitionFromJsonFile("" + stageId);
+
+	HintBoardProvider *hProvider = new HintBoardProvider();
+	HintBoard *hintBoard = hProvider->createBoard(stageDefinition);
+
+	hintBoardControl = new HintBoardControl();
+	hintBoardControl->initialize(hintBoard);
+
+
+	// Add hintBoardControl onto scene
+
+
+	PuzzleBoardProvider *pProvider = new PuzzleBoardProvider();
+	PuzzleBoard *puzzleBoard = pProvider->createBoard(stageDefinition);
+
+	puzzleBoardControl = new PuzzleBoardControl();
+	puzzleBoardControl->initialize(puzzleBoard);
+
+}

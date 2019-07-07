@@ -22,13 +22,23 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+
+#include <cocos2d/cocos/ui/CocosGUI.h>
 #include "SelectStageScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
+using namespace cocos2d::ui;
 
-Scene* SelectStageScene::createScene()
+
+Scene* SelectStageScene::createScene(int categoryId)
 {
-    return SelectStageScene::create();
+	SelectStageScene *scene = SelectStageScene::create();
+
+	scene->categoryId = categoryId;
+	scene->initWithCategory();
+
+	return scene;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -116,4 +126,68 @@ bool SelectStageScene::init()
         this->addChild(sprite, 0);
     }
     return true;
+}
+
+void SelectStageScene::initWithCategory()
+{
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	const std::string backgroundFileName = "images/win32/background/category-01-bg.png";
+	auto sprite = Sprite::create(backgroundFileName);
+
+	if (sprite == nullptr)
+	{
+		problemLoading("'HelloWorld.png'");
+	}
+	else
+	{
+		// position the sprite on the center of the screen
+		sprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+		// add the sprite as a child to this layer
+		this->addChild(sprite, 0);
+	}
+
+	const std::string confirmButtonFileName = "images/win32/control/category-button-01.png";
+	auto confirmButtonsprite = Sprite::create(confirmButtonFileName);
+
+	if (confirmButtonsprite == nullptr)
+	{
+		problemLoading("'HelloWorld.png'");
+	}
+	else
+	{
+		// position the sprite on the center of the screen
+		confirmButtonsprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 8 + origin.y));
+
+		// add the sprite as a child to this layer
+		this->addChild(confirmButtonsprite, 10);
+	}
+
+	auto button = Button::create("images/win32/control/category-button-01.png", "images/win32/control/category-button-01.png");
+
+	button->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type) {
+		switch (type)
+		{
+		case ui::Widget::TouchEventType::BEGAN:
+			break;
+		case ui::Widget::TouchEventType::ENDED:
+
+			this->onConfirmClicked(sender);
+			/// std::cout << "Button 1 clicked" << std::endl;
+			break;
+		default:
+			break;
+		}
+	});
+
+	this->addChild(button);
+}
+
+void SelectStageScene::onConfirmClicked(Ref* pSender)
+{
+	auto scene = GameScene::createScene(1);
+	Director::getInstance()->replaceScene(TransitionFade::create(1, scene, Color3B(255, 255, 255)));
+
 }

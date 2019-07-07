@@ -22,33 +22,36 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __HINT_BOARD_H__
+#define __HINT_BOARD_H__
 
 #include "cocos2d.h"
+#include "../definitions/CharacterDefinition.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+enum HintStatus
+{
+	HintStatus_Hidden = 1,
+	HintStatus_Shown = 2
+};
+
+class HintBoard : public cocos2d::Ref
 {
 private:
 
-	int categoryId = 0;
+	int lineCount;
+	int columnCount;
+
+	HintStatus statusMatrix[];
 
 public:
-    static SelectCategoryScene* createScene(int categoryId);
-
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
 
 
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
+	int GetLineCount();
+	int GetColumnCount();
 
 
-	void initWithCategory();
+	CharacterDefinition* GetCharacterAt(int lineIndex, int columnIndex);
+
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __HINT_BOARD_H__

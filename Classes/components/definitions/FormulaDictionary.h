@@ -22,33 +22,22 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __FORMULA_DICTIONARY_H__
+#define __FORMULA_DICTIONARY_H__
 
 #include "cocos2d.h"
+#include "FormulaDefinition.h"
+#include "CharacterDefinition.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+class FormulaDictionary : public cocos2d::Ref
 {
 private:
 
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
+	void addFormula(const CharacterDefinition* charA, const CharacterDefinition* charB, const CharacterDefinition* targetChar);
+	void addFormula(const FormulaDefinition* formula);
 
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __FORMULA_DICTIONARY_H__

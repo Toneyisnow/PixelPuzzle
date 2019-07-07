@@ -22,33 +22,25 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef  __DEFINITION_LOADER_H__
+#define  __DEFINITION_LOADER_H__
 
 #include "cocos2d.h"
+#include "components/definitions/StageDefinition.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+/**
+@brief    The cocos2d Application.
+
+Private inheritance here hides part of interface from Director.
+*/
+class  DefinitionLoader : private cocos2d::Ref
 {
-private:
-
-	int categoryId = 0;
-
 public:
-    static SelectCategoryScene* createScene(int categoryId);
+	DefinitionLoader();
+    virtual ~DefinitionLoader();
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
-
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
+	static StageDefinition* loadStageDefinitionFromJsonFile(const char* filename);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __DEFINITION_LOADER_H__
+

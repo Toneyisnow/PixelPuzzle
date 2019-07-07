@@ -22,33 +22,21 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __SELECT_CATEGORY_SCENE_H__
-#define __SELECT_CATEGORY_SCENE_H__
+#ifndef __HINT_BOARD_CONTROL_H__
+#define __HINT_BOARD_CONTROL_H__
 
 #include "cocos2d.h"
+#include "components/types/HintBoard.h"
 
-class SelectCategoryScene : public cocos2d::Scene
+
+class HintBoardControl : public cocos2d::Ref
 {
 private:
-
-	int categoryId = 0;
+	HintBoard *_hintBoard;
 
 public:
-    static SelectCategoryScene* createScene(int categoryId);
 
-    virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-	void onConfirmClicked(cocos2d::Ref* pSender);
-
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(SelectCategoryScene);
-
-
-	void initWithCategory();
+	void initialize(HintBoard *hintBoard);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __HINT_BOARD_CONTROL_H__

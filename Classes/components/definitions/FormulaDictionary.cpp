@@ -22,14 +22,6 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __HINT_BOARD_H__
-#define __HINT_BOARD_H__
+#include "FormulaDictionary.h"
 
-#include "cocos2d.h"
-
-class HintBoard : public cocos2d::Ref
-{
-public:
-};
-
-#endif // __HINT_BOARD_H__
+USING_NS_CC;
